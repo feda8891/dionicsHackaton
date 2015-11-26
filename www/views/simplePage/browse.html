@@ -1,0 +1,16 @@
+<ion-view view-title="Browse">
+  <ion-content>
+    <div class="item">
+        <h2>{{user.name}}</h2>
+        <p>{{user.city}}</p>
+    </div>
+    <div class="item item-body">
+        <img src="http://graph.facebook.com/{{user.id}}/picture?width=270&height=270"/>
+    </div>
+    <button class="button button-stable" ng-click="takePhoto()">
+      button-stable
+    </button>
+    <img ng-src="{{lastPhoto}}" style="max-width: 100%">
+    <span count-to="10" value="0" duration="10">a</span>
+  </ion-content>
+</ion-view>
