@@ -1,0 +1,17 @@
+.background-card{
+	background-image: url('../../img/img1.jpg');
+	background-position: center;
+	min-height: 150px
+}
+
+.tabs-card {
+	padding-top: 30px;
+	padding-left: 0;
+}
+
+.slidebox-full{
+	min-height: 350px;
+	height: 100%;
+	max-height: 1000px;
+	margin: 0 auto;
+}

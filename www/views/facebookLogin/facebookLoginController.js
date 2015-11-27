@@ -10,7 +10,7 @@ angular.module('dionics.loginFacebookController', ['ionic', 'ngOpenFB', 'dionics
 	};
 
 	$scope.fbLogin = function () {
-    ngFB.login({scope: 'email'}).then(
+    ngFB.login({scope: 'email, public_profile'}).then(
         function (response) {
             if (response.status === 'connected') {
                 console.log('Facebook login succeeded');
@@ -26,6 +26,5 @@ angular.module('dionics.loginFacebookController', ['ionic', 'ngOpenFB', 'dionics
         });
 	};
 
-	
 
 })

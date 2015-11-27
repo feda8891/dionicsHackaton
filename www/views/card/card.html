@@ -1,0 +1,40 @@
+<ion-view view-title="Card">
+  <ion-content overflow-scroll="true">
+
+    <ion-list>
+      <ion-item class="background-card"></ion-item>
+      <ion-item class="tabs-card">
+        <ion-tabs class="tabs-striped tabs-color-positive tabs-icon-only">
+
+          <ion-tab title="Home" icon-on="ion-ios-filing" icon-off="ion-ios-filing-outline" on-select="onTabSelected()">
+            ioio
+          </ion-tab>
+
+          <ion-tab title="About" icon-on="ion-ios-clock" icon-off="ion-ios-clock-outline" on-select="onTabSelected()">
+            ioio
+          </ion-tab>
+
+          <ion-tab title="Settings" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline" on-select="onTabSelected()">
+            ioio
+          </ion-tab>
+
+        </ion-tabs>
+      </ion-item>
+      </ion-list>
+     
+        <ion-slide-box on-slide-changed="slideHasChanged($index)">
+          <ion-slide>
+            <div class="box slidebox-full"><h1>BLUE</h1></div>
+          </ion-slide>
+          <ion-slide>
+            <div class="box slidebox-full"><h1>YELLOW</h1></div>
+          </ion-slide>
+          <ion-slide>
+            <div class="box slidebox-full"><h1>PINK</h1></div>
+          </ion-slide>
+        </ion-slide-box>
+
+    
+
+  </ion-content>
+</ion-view>

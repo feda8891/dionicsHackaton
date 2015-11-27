@@ -11,9 +11,7 @@ angular.module('dionics.browseController', ['ionic', 'dionics.localStorage', 'di
 		var authenticatedUser = localStorage.get("userAuthenticated", false);
 		if (authenticatedUser!= false)
 			$scope.user = angular.fromJson(localStorage.get("user"+authenticatedUser, false));
-		
-		
-		
+
 	});
 
 	$scope.takePhoto = function(){
@@ -23,6 +21,13 @@ angular.module('dionics.browseController', ['ionic', 'dionics.localStorage', 'di
 	      console.err(err);
 	    });
 	};
+
+	$scope.savePerson = function() {
+        var PeopleObject = Parse.Object.extend("UserObj");
+        var person = new PeopleObject();
+        person.set("name", $scope.user.name);
+        person.save(null, {});
+    };
 
 
 })

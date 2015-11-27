@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('dionics', ['ionic', 'dionics.menuController','dionics.loginController', 'ngOpenFB', 'dionics.loginFacebookController', 'dionics.browseController'])
+angular.module('dionics', ['ionic', 'dionics.menuController','dionics.loginController', 'ngOpenFB', 'dionics.loginFacebookController', 'dionics.browseController', 'dionics.cardController', 'countTo', 'uiGmapgoogle-maps', 'dionics.mapController'])
 
 .run(function($ionicPlatform, ngFB) {
   ngFB.init({appId: '104920509868817'});
@@ -20,11 +20,28 @@ angular.module('dionics', ['ionic', 'dionics.menuController','dionics.loginContr
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    Parse.initialize("4OqmN3zjfBzBTvhzveigVHCW0NbSfwHbDeJageLh", "gQxFzEJE1lWnzLj6i4LbJdnO2bgxaNodL4wBe0B0");
+
+    Ionic.io();
+
+    var push = new Ionic.Push({
+      "debug": true,
+      "onNotification": function(notification) {
+          var payload = notification.payload;
+          console.log(notification, payload);
+      }
+    });
+
+    push.register(function(token) {
+      console.log("Device token:",token.token);
+            
+    });
   });
 })
 
 
-.config(function($stateProvider, $urlRouterProvider, $compileProvider) {
+.config(function($stateProvider, $urlRouterProvider, $compileProvider, uiGmapGoogleMapApiProvider) {
+
   $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
 
   $stateProvider
@@ -48,11 +65,31 @@ angular.module('dionics', ['ionic', 'dionics.menuController','dionics.loginContr
     controller: 'MenuCtrl'
   })
 
+  .state('app.card', {
+      url: '/card',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/card/card.html',
+          controller: 'CardCtrl'
+        }
+      }
+    })
+
+  .state('app.map', {
+      url: '/map',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/map/map.html',
+          controller: 'MapCtrl'
+        }
+      }
+    })
 
   .state('app.browse', {
       url: '/browse',
       views: {
         'menuContent': {
+          cache: false,
           templateUrl: 'views/simplePage/browse.html',
           controller: 'BrowseCtrl'
         }
